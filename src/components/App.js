@@ -1,13 +1,28 @@
+// App.js
+import React, { useState } from 'react';
+import TaskList from './TaskList';
+import TaskForm from './TaskForm';
 
-import React from "react";
-import './../styles/App.css';
+function App() {
+  const [tasks, setTasks] = useState([]);
 
-const App = () => {
+  const addTask = (task) => {
+    setTasks([...tasks, task]);
+  };
+
+  const removeTask = (index) => {
+    const newTasks = [...tasks];
+    newTasks.splice(index, 1);
+    setTasks(newTasks);
+  };
+
   return (
-    <div>
-        {/* Do not remove the main div */}
+    <div className="App">
+      <h1>To-Do List</h1>
+      <TaskForm addTask={addTask} />
+      <TaskList tasks={tasks} removeTask={removeTask} />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
