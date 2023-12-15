@@ -18,6 +18,7 @@ function TaskList({ tasks, removeTask }) {
 
         }}>
           {task}
+          <button onClick={() => removeTask(index)}>Delete</button>
         </li>
       ))}
     </ul>
